@@ -19,7 +19,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=9`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=10`
         );
         console.log("response :>> ", response.data);
         setCount(response.data.count);
