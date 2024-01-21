@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Avatar from "../components/Avatar";
 
 const Offer = () => {
   const [offer, setOffer] = useState({});
@@ -21,8 +22,9 @@ const Offer = () => {
       }
     };
     fetchData();
-    console.log("offer :>> ", offer);
   }, []);
+
+  console.log("offer :>> ", offer);
 
   return isLoading ? (
     <p>is loading...</p>
@@ -31,7 +33,7 @@ const Offer = () => {
       <div className="container">
         <img src={offer.product_image.url} alt="photo" />
         <div className="offer-content">
-          <div className="price">{offer.product_price} €</div>
+          <div className="price">{offer.product_price.toFixed(2)} €</div>
           <div className="offer-details">
             {offer.product_details.map((detail, index) => (
               <div key={index}>
@@ -40,17 +42,17 @@ const Offer = () => {
               </div>
             ))}
           </div>
-          <div className="offer-name">{offer.product_name}</div>
-          <div className="description">{offer.product_description}</div>
-          <div className="username">{offer.owner.account.username}</div>
-          {/* 20 €
-
-Tailleur pantalon Ikito
-
-très bien coupé pantalon droit avec poches qui arrive aux chevilles et se ferme par un zip discret veste cintrée avec gros boutons métallisés taille 36 marque Ikito, vintage, qui n’existe plus :) marron chiné
-
-Tailleur pantalon Ikito
-Monica.Jaskolski */}
+          <div className="divider"></div>
+          <div>
+            <p className="offer-name">{offer.product_name}</p>
+            <p className="description">{offer.product_description}</p>
+            <Avatar
+              username={offer.owner.account.username}
+              avatar={offer.owner.account.avatar?.secure_url}
+              size={"medium"}
+            />
+          </div>
+          <button className="dark-button">Acheter</button>
         </div>
       </div>
     </div>

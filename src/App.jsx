@@ -11,6 +11,7 @@ import axios from "axios";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [page, setPage] = useState(1);
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,7 +19,7 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=9`
         );
         console.log("response :>> ", response.data);
         setCount(response.data.count);
@@ -29,7 +30,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
     <Router>
@@ -38,7 +39,13 @@ function App() {
         <Route
           path="/"
           element={
-            <Home isLoading={isLoading} offers={offers} setOffers={setOffers} />
+            <Home
+              isLoading={isLoading}
+              offers={offers}
+              count={count}
+              page={page}
+              setPage={setPage}
+            />
           }
         />
         <Route path="/offer/:id" element={<Offer />} />

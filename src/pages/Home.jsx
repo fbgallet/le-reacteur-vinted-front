@@ -1,13 +1,31 @@
 import Hero from "../components/Hero";
 import OfferCard from "../components/OfferCard";
 
-const Home = ({ isLoading, offers, setOffers }) => {
+const Home = ({ isLoading, offers, count, page, setPage }) => {
+  const nbPages = Math.ceil(count / 9);
+  const pagesArray = Array.from({ length: nbPages }, (_, index) => index + 1);
+  console.log("nbPages :>> ", nbPages);
+  console.log("pagesArray :>> ", pagesArray);
+
   return isLoading ? (
     <div>Loading data...</div>
   ) : (
     <main>
       <div className="container">
         <Hero />
+        <div className="pages-nav">
+          <span>Page:</span>
+          {pagesArray.map((pageNb, index) => (
+            <span
+              key={index}
+              onClick={() => {
+                setPage(pageNb);
+              }}
+            >
+              {pageNb === page ? pageNb : <a>{pageNb}</a>}
+            </span>
+          ))}
+        </div>
         <div className="offers-list">
           {offers.map((offer) => (
             <OfferCard

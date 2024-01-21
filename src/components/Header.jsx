@@ -12,7 +12,6 @@ const Header = () => {
           </Link>
         </div>
         <div className="search">
-          Search
           <input type="text" placeholder="Recherche des articles" />
         </div>
         <div className="login">
