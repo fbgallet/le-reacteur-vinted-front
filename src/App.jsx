@@ -8,8 +8,12 @@ import Header from "./components/Header";
 // import About from "./pages/About";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Cookies from "js-cookie";
 
 function App() {
+  const [token, setToken] = useState(Cookies.get("userToken" || ""));
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
   const [offers, setOffers] = useState([]);
@@ -34,7 +38,7 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Header token={token} setToken={setToken} />
       <Routes>
         <Route
           path="/"
@@ -49,7 +53,8 @@ function App() {
           }
         />
         <Route path="/offer/:id" element={<Offer />} />
-        {/* <Route path="/product/:id" element={<Product />} /> */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

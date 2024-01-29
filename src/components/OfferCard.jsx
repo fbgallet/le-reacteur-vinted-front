@@ -10,7 +10,7 @@ const OfferCard = ({ id, owner, image, size, brand, price }) => {
         size={"small"}
       />
       <Link to={`/offer/${id}`}>
-        <img src={image.url} alt="photo" />
+        <img src={image.secure_url} alt="photo" />
         <div className="price">{price} €</div>
         <div className="size">{size}</div>
         <div className="brand">{brand}</div>
