@@ -15,6 +15,7 @@ const Header = ({ token, setToken }) => {
     setToken("");
     // navigate("/");
   };
+  console.log("token :>> ", token);
 
   return (
     <header>

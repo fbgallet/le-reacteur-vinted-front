@@ -4,8 +4,8 @@ import OfferCard from "../components/OfferCard";
 const Home = ({ isLoading, offers, count, page, setPage }) => {
   const nbPages = Math.ceil(count / 10);
   const pagesArray = Array.from({ length: nbPages }, (_, index) => index + 1);
-  console.log("nbPages :>> ", nbPages);
-  console.log("pagesArray :>> ", pagesArray);
+  // console.log("nbPages :>> ", nbPages);
+  // console.log("pagesArray :>> ", pagesArray);
 
   return isLoading ? (
     <div>Loading data...</div>

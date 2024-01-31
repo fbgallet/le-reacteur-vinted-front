@@ -216,3 +216,10 @@ main > .container {
     border-radius: 50%;
   }
 }
+
+/* SIGNUP */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
