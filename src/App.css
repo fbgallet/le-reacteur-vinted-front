@@ -6,6 +6,13 @@ h1 {
   font-size: 32px;
   font-weight: bold;
 }
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+strong {
+  font-weight: bold;
+}
 a {
   text-decoration: none;
 }
@@ -22,6 +29,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
 }
 .light-button {
   background-color: white;
@@ -32,12 +42,16 @@ button {
   background-color: #2bb1ba;
   color: white;
 }
+.red-button {
+  background-color: rgb(190, 0, 0);
+  color: white;
+}
 
 header > .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 300px;
   gap: 30px;
   .logo img {
     height: 30px;
@@ -58,7 +72,6 @@ header > .container {
   button {
     font-size: 12px;
     width: 120px;
-    padding: 10px;
   }
   .login {
     padding: 0 10px;
@@ -191,7 +204,6 @@ main > .container {
       }
       button {
         font-size: 16px;
-        padding: 10px;
       }
     }
   }
@@ -222,4 +234,84 @@ form {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+/* PUBLISH */
+.publish-page {
+  form {
+    > div {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+      .uploaded-image {
+        position: relative;
+        width: fit-content;
+        img {
+          width: 100px;
+          object-fit: cover;
+        }
+        button {
+          padding: 5px;
+          margin: auto;
+          text-align: center;
+          width: 15px;
+          position: absolute;
+          top: 5px;
+          right: 5px;
+        }
+      }
+    }
+    label {
+      width: 100%;
+      margin: 15px 0;
+      input {
+        padding: 5px;
+        position: absolute;
+        left: 120px;
+        width: 80%;
+      }
+    }
+    > button {
+      padding: 10px;
+      width: 150px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.payment {
+  background-color: #ebedee;
+  height: 100vh;
+  padding: 30px 0;
+  .container {
+    background-color: white;
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .price-detail > div,
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+    .price-total {
+      font-weight: bold;
+      padding-top: 30px;
+      border-top: 1px solid lightgrey;
+    }
+    .StripeElement {
+      padding: 5px;
+      /* border: 1px solid rgba(211, 211, 211, 0.6); */
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.payment-form {
+  button {
+    width: 200px;
+  }
 }

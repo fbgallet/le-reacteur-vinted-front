@@ -11,6 +11,8 @@ import axios from "axios";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Cookies from "js-cookie";
+import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken" || ""));
@@ -18,27 +20,51 @@ function App() {
   const [page, setPage] = useState(1);
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchString, setSearchString] = useState("");
+  const [range, setRange] = useState([50, 100]);
+
+  // console.log("count :>> ", count);
+  console.log("offers :>> ", offers);
+  console.log(searchString);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=10`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=10${
+            searchString ? "&title=" + searchString : ""
+          }` // `
         );
+        // site--vinted-replica-back--2bhrm4wg9nqn.code.run
+        // const response = await axios.get(
+        //   `https://site--vinted-replica-back--2bhrm4wg9nqn.code.run/offers`
+        //   `https://site--vinted-replica-back--2bhrm4wg9nqn.code.run/offers?page=${page}&limit=10`
+        // );
         console.log("response :>> ", response.data);
         setCount(response.data.count);
         setOffers(response.data.offers);
+        // with my back
+        // setCount(response.data.length);
+        // setOffers(response.data);
+
         setIsLoading(false);
       } catch (error) {
         console.log(error.response);
       }
     };
     fetchData();
-  }, [page]);
+  }, [page, searchString]);
 
   return (
     <Router>
-      <Header token={token} setToken={setToken} />
+      <Header
+        token={token}
+        setToken={setToken}
+        searchString={searchString}
+        setSearchString={setSearchString}
+        range={range}
+        setRange={setRange}
+      />
       <Routes>
         <Route
           path="/"
@@ -52,9 +78,11 @@ function App() {
             />
           }
         />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/offer/:id" element={<Offer token={token} />} />
         <Route path="/signup" element={<Signup setToken={setToken} />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
+        <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment token={token} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

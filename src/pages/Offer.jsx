@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Avatar from "../components/Avatar";
 
-const Offer = () => {
+const Offer = ({ token }) => {
   const [offer, setOffer] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   // console.log("id", id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +24,13 @@ const Offer = () => {
     };
     fetchData();
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    token
+      ? navigate("/payment", { state: { offer } })
+      : navigate("/login", { state: { from: `/offer/${id}` } });
+  };
 
   console.log("offer :>> ", offer);
 
@@ -52,7 +60,9 @@ const Offer = () => {
               size={"medium"}
             />
           </div>
-          <button className="dark-button">Acheter</button>
+          <button className="dark-button" onClick={handleSubmit}>
+            Acheter
+          </button>
         </div>
       </div>
     </div>

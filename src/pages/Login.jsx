@@ -23,6 +23,7 @@ const Login = ({ setToken }) => {
       );
       console.log(data);
       Cookie.set("userToken", data.token, { secure: true });
+      Cookie.set("userName", data.account.username);
       setToken(data.token);
       navigate("/");
     } catch (error) {
