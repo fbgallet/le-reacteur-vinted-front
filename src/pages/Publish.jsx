@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
@@ -75,7 +75,9 @@ const Publish = ({ token }) => {
 
   return token ? (
     <div className="publish-page">
-      <h2>Vends ton article</h2>
+      <h2>
+        {Cookies.get("userName")}, présente soigneusement ton article à vendre !
+      </h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>
@@ -206,7 +208,7 @@ const Publish = ({ token }) => {
   ) : (
     <>
       <p>No token!</p>
-      <Navigate to="/login" />
+      <Navigate to="/login" state={{ from: "/publish" }} />
     </>
   );
 };

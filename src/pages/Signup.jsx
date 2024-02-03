@@ -26,7 +26,7 @@ const Signup = ({ setToken }) => {
       console.log(data);
       Cookie.set("userToken", data.token, { secure: true });
       setToken(data.token);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error.message);
     }

@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import Cookie from "js-cookie";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChange = (event, setStateCallback) => {
     setStateCallback(event.target.value);
@@ -21,13 +22,17 @@ const Login = ({ setToken }) => {
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         { email, password }
       );
-      console.log(data);
-      Cookie.set("userToken", data.token, { secure: true });
-      Cookie.set("userName", data.account.username);
+      // console.log(data);
+      Cookie.set("userToken", data.token, { secure: true, sameSite: "strict" });
+      Cookie.set("userName", data.account.username, {
+        secure: true,
+        sameSite: "strict",
+      });
       setToken(data.token);
-      navigate("/");
+      location.state ? navigate(location.state.from) : navigate("/");
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response);
+      alert("Email ou mot de passe incorrect.");
     }
   };
 
