@@ -21,7 +21,8 @@ function App() {
   const [offers, setOffers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchString, setSearchString] = useState("");
-  const [range, setRange] = useState([50, 100]);
+  const [range, setRange] = useState([0, 100]);
+  const [descendingSort, setDescendingSort] = useState(null);
 
   // console.log("count :>> ", count);
   console.log("offers :>> ", offers);
@@ -33,7 +34,16 @@ function App() {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=10${
             searchString ? "&title=" + searchString : ""
+          }${range[0] ? "&priceMin=" + range[0] : ""}${
+            "&priceMax=" + range[1]
+          }${
+            descendingSort !== null
+              ? descendingSort
+                ? "&sort=price-desc"
+                : "&sort=price-asc"
+              : ""
           }` // `
+          // ex : https://lereacteur-vinted-api.herokuapp.com/offers?priceMin=40&priceMax=200
         );
         // site--vinted-replica-back--2bhrm4wg9nqn.code.run
         // const response = await axios.get(
@@ -53,7 +63,7 @@ function App() {
       }
     };
     fetchData();
-  }, [page, searchString]);
+  }, [page, searchString, range, descendingSort]);
 
   return (
     <Router>
@@ -64,6 +74,8 @@ function App() {
         setSearchString={setSearchString}
         range={range}
         setRange={setRange}
+        descendingSort={descendingSort}
+        setDescendingSort={setDescendingSort}
       />
       <Routes>
         <Route
