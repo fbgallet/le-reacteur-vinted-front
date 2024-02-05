@@ -1,8 +1,14 @@
-# React + Vite
+## Full-stack Vinted replica made @ [Le Reacteur](https://www.lereacteur.io/) Bootcamp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 🚧 Work In progress
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### B. Backend
+1. [x] Offer list on home page
+  - with search, filter (range) (using react-ranger package) and sort on price
+3. [x] Offer page
+  - with image carousel using [react-multi-carousel](https://www.npmjs.com/package/react-multi-carousel)
+4. [x] Publish an offer
+5. [x] Authentification (signup & login)
+6. [x] Payment with Stripe
+7, [x] Responsive
+8. [x] Deployment on Netlify: https://my-vinted-replica-at-le-reacteur.netlify.app/
