@@ -14,7 +14,7 @@ const Home = ({ isLoading, offers, count, page, setPage }) => {
       <div className="container">
         <Hero />
         <div className="pages-nav">
-          <span>Page:</span>
+          <span>Pages:</span>
           {pagesArray.map((pageNb, index) => (
             <span
               key={index}

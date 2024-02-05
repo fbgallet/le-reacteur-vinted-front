@@ -1,0 +1,31 @@
+.signup-page,
+.login-page {
+  margin: 50px auto;
+  max-width: 400px;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    input {
+      padding: 10px;
+      border: none;
+      border-bottom: 1px lightgrey solid;
+      font-size: 16px;
+    }
+    .newsletter {
+      input {
+        margin-right: 15px;
+      }
+      p {
+        margin: 10px 5px;
+        font-size: 12px;
+      }
+    }
+    > a {
+      text-align: center;
+      color: var(--vinted-green);
+      font-size: 12px;
+    }
+  }
+}

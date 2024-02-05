@@ -75,135 +75,140 @@ const Publish = ({ token }) => {
 
   return token ? (
     <div className="publish-page">
-      <h2>
-        {Cookies.get("userName")}, présente soigneusement ton article à vendre !
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Ajoute une photo:
-            <input
-              type="file"
-              onChange={(event) => {
-                setFile(event.target.files[0]);
-              }}
-            />
-          </label>
-          {file && (
-            <div className="uploaded-image">
-              <img src={URL.createObjectURL(file)} alt="" />
-              <button>X</button>
-            </div>
-          )}
-        </div>
-        <div>
-          <label>
-            Titre:
-            <input
-              placeholder="ex: Chemise verte"
-              type="text"
-              name="title"
-              id="title"
-              value={title}
-              onChange={(evt) => handleChange(evt, setTitle)}
-            />
-          </label>
-          <label>
-            Décris ton article:
-            <textarea
-              placeholder="ex: porté une seule fois, taille correctement"
-              type="description"
-              name="description"
-              id="pawword"
-              value={description}
-              onChange={(evt) => handleChange(evt, setDescription)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Marque:
-            <input
-              placeholder="ex: Zara"
-              type="text"
-              name="brand"
-              id="brand"
-              value={brand}
-              onChange={(evt) => handleChange(evt, setBrand)}
-            />
-          </label>
-          <label>
-            Size:
-            <input
-              placeholder="ex: L / 42"
-              type="text"
-              name="size"
-              id="size"
-              value={size}
-              onChange={(evt) => handleChange(evt, setSize)}
-            />
-          </label>
-          <label>
-            Couleur:
-            <input
-              placeholder="ex: Bleu"
-              type="text"
-              name="color"
-              id="color"
-              value={color}
-              onChange={(evt) => handleChange(evt, setColor)}
-            />
-          </label>
-          <label>
-            Etat:
-            <input
-              placeholder="ex: comme neuf"
-              type="text"
-              name="condition"
-              id="condition"
-              value={condition}
-              onChange={(evt) => handleChange(evt, setCondition)}
-            />
-          </label>
-          <label>
-            Lieu:
-            <input
-              placeholder="ex: Toulouse"
-              type="text"
-              name="place"
-              id="place"
-              value={place}
-              onChange={(evt) => handleChange(evt, setPlace)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Prix
-            <input
-              placeholder="0,00 €"
-              type="text"
-              name="price"
-              id="price"
-              value={price}
-              onChange={(evt) => handleChange(evt, setPrice)}
-            />
-          </label>
+      <div className="container">
+        <h2>
+          {Cookies.get("userName")}, présente soigneusement ton article à vendre
+          !
+        </h2>
+        <form onSubmit={handleSubmit}>
           <div>
-            <input
-              type="checkbox"
-              name="exchange"
-              id="exchange"
-              value={exchange}
-              onChange={(evt) => handleChange(evt, setExchange)}
-            />
-            <label htmlFor="exchange">
-              Je suis intéressé(e) par les échanges
+            <label>
+              Ajoute une photo
+              <input
+                type="file"
+                onChange={(event) => {
+                  setFile(event.target.files[0]);
+                }}
+              />
+            </label>
+            {file && (
+              <div className="uploaded-image">
+                <img src={URL.createObjectURL(file)} alt="" />
+                <button>X</button>
+              </div>
+            )}
+          </div>
+          <div>
+            <label>
+              Titre:
+              <input
+                placeholder="ex: Chemise verte"
+                type="text"
+                name="title"
+                id="title"
+                value={title}
+                onChange={(evt) => handleChange(evt, setTitle)}
+              />
+            </label>
+            <label>
+              Décris ton article:
+              <textarea
+                placeholder="ex: porté une seule fois, taille correctement"
+                type="description"
+                name="description"
+                id="pawword"
+                rows="3"
+                cols="100"
+                value={description}
+                onChange={(evt) => handleChange(evt, setDescription)}
+              />
             </label>
           </div>
-        </div>
-        <button className="dark-button">Ajouter</button>
-      </form>
+          <div>
+            <label>
+              Marque:
+              <input
+                placeholder="ex: Zara"
+                type="text"
+                name="brand"
+                id="brand"
+                value={brand}
+                onChange={(evt) => handleChange(evt, setBrand)}
+              />
+            </label>
+            <label>
+              Size:
+              <input
+                placeholder="ex: L / 42"
+                type="text"
+                name="size"
+                id="size"
+                value={size}
+                onChange={(evt) => handleChange(evt, setSize)}
+              />
+            </label>
+            <label>
+              Couleur:
+              <input
+                placeholder="ex: Bleu"
+                type="text"
+                name="color"
+                id="color"
+                value={color}
+                onChange={(evt) => handleChange(evt, setColor)}
+              />
+            </label>
+            <label>
+              Etat:
+              <input
+                placeholder="ex: comme neuf"
+                type="text"
+                name="condition"
+                id="condition"
+                value={condition}
+                onChange={(evt) => handleChange(evt, setCondition)}
+              />
+            </label>
+            <label>
+              Lieu:
+              <input
+                placeholder="ex: Toulouse"
+                type="text"
+                name="place"
+                id="place"
+                value={place}
+                onChange={(evt) => handleChange(evt, setPlace)}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Prix
+              <input
+                placeholder="0,00 €"
+                type="text"
+                name="price"
+                id="price"
+                value={price}
+                onChange={(evt) => handleChange(evt, setPrice)}
+              />
+            </label>
+            <div>
+              <input
+                type="checkbox"
+                name="exchange"
+                id="exchange"
+                value={exchange}
+                onChange={(evt) => handleChange(evt, setExchange)}
+              />
+              <label htmlFor="exchange">
+                Je suis intéressé(e) par les échanges
+              </label>
+            </div>
+          </div>
+          <button className="dark-button">Ajouter</button>
+        </form>
+      </div>
     </div>
   ) : (
     <>

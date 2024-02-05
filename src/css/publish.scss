@@ -1,0 +1,80 @@
+.publish-page {
+  background-color: rgba(211, 211, 211, 0.6);
+  .container {
+    padding-top: 20px;
+    form {
+      display: flex;
+      flex-direction: column;
+      > div {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        background-color: white;
+        padding: 10px;
+        border: 1px solid lightgrey;
+        &:has(input[type="file"]) > label {
+          border: 1px red solid;
+          margin: 20px auto;
+          border: 1px solid var(--vinted-green);
+          color: var(--vinted-green);
+          width: 200px;
+          justify-content: center;
+          padding: 10px;
+          cursor: pointer;
+          input {
+            display: none;
+          }
+        }
+        .uploaded-image {
+          position: relative;
+          width: fit-content;
+          img {
+            width: 100px;
+            object-fit: cover;
+          }
+          button {
+            padding: 5px;
+            margin: auto;
+            text-align: center;
+            width: 15px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+          }
+        }
+        &:has(input[type="checkbox"]) > div {
+          display: flex;
+          margin-left: 15%;
+          gap: 10px;
+        }
+      }
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin: 15px 0;
+        input,
+        textarea {
+          background: white !important;
+          padding: 5px;
+          // position: relative;
+          // left: 120px;
+          width: 85%;
+          border: none;
+          border-bottom: 1px lightgrey solid;
+          font-size: 16px;
+        }
+        textarea {
+          resize: none;
+        }
+      }
+      > button {
+        padding: 10px;
+        width: 150px;
+        margin: 20px 0;
+        align-self: flex-end;
+      }
+    }
+  }
+}

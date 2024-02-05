@@ -1,0 +1,36 @@
+.payment {
+  background-color: #ebedee;
+  height: 100vh;
+  padding: 30px 0;
+  .container {
+    background-color: white;
+    margin: 0 auto;
+    padding: 30px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .price-detail > div,
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+    .price-total {
+      font-weight: bold;
+      padding-top: 30px;
+      border-top: 1px solid lightgrey;
+    }
+    .StripeElement {
+      padding: 5px;
+      /* border: 1px solid rgba(211, 211, 211, 0.6); */
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.payment-form {
+  button {
+    width: 200px;
+  }
+}

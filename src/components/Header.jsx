@@ -49,6 +49,7 @@ const Header = ({
             <img src={logo} alt="logo" />{" "}
           </Link>
         </div>
+        <div className="divider small-screen"></div>
         <div className="search">
           <input
             type="text"
@@ -63,7 +64,8 @@ const Header = ({
                 onChange={handleSort}
                 checked={descendingSort === null ? false : descendingSort}
                 className="react-switch"
-                onColor=" #42d6e1"
+                onColor="#DDDDDD"
+                offColor="#DDDDDD"
                 onHandleColor="#2bb1ba"
                 offHandleColor="#2bb1ba"
                 checkedHandleIcon={

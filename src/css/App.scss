@@ -1,0 +1,102 @@
+@import "./index.css";
+@import "./header.scss";
+@import "./home.scss";
+@import "./offer.scss";
+@import "./login.scss";
+@import "./publish.scss";
+@import "./payment.scss";
+
+:root {
+  --vinted-green: #2bb1ba;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  .small-screen {
+    display: none;
+  }
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+strong {
+  font-weight: bold;
+}
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+.divider {
+  background: hsla(0, 0%, 7%, 0.1);
+  display: block;
+  height: 1px;
+  width: 100%;
+}
+button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: lightgray;
+}
+
+.light-button {
+  background-color: white;
+  color: var(--vinted-green);
+  border: 1px solid var(--vinted-green);
+}
+.dark-button {
+  background-color: var(--vinted-green);
+  color: white;
+}
+.red-button {
+  background-color: rgb(190, 0, 0);
+  color: white;
+}
+
+main > .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &.small {
+    padding: 10px 0;
+    > img {
+      height: 25px;
+    }
+  }
+  &.medium {
+    > img {
+      height: 50px;
+    }
+  }
+  > img {
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container {
+    padding: 0 20px;
+  }
+}
