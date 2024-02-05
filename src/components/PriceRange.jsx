@@ -1,5 +1,3 @@
-// import { Range, getTrackBackground } from "react-range";
-import { useState } from "react";
 import { useRanger } from "react-ranger";
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -59,10 +57,6 @@ export const Handle = styled("div")`
       : "translateX(-10px) scale(1)"};
 `;
 
-// transform: ${(props) =>
-// props.active ? "translateY(-100%) scale(1.1)" : "translateX(15px)"};
-// transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-
 const PriceRange = ({ range, setRange }) => {
   const { getTrackProps, segments, handles } = useRanger({
     min: MIN,
@@ -91,7 +85,7 @@ const PriceRange = ({ range, setRange }) => {
               },
             })}
           >
-            <Handle active={active}>{value} €</Handle>
+            <Handle active={active ? "true" : undefined}>{value} €</Handle>
           </button>
         ))}
       </Track>

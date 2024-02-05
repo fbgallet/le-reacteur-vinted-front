@@ -36,7 +36,6 @@ const Signup = ({ setToken }) => {
     <div className="signup-page">
       <h2>S'inscrire</h2>
       <form onSubmit={handleSubmit}>
-        {/* <label htmlFor="username">Username:</label> */}
         <input
           placeholder="Nom d'utilisateur"
           type="text"
@@ -45,7 +44,6 @@ const Signup = ({ setToken }) => {
           value={username}
           onChange={(evt) => handleChange(evt, setUsername)}
         />
-        {/* <label htmlFor="email">Email:</label> */}
         <input
           placeholder="Email"
           type="text"
@@ -54,7 +52,6 @@ const Signup = ({ setToken }) => {
           value={email}
           onChange={(evt) => handleChange(evt, setEmail)}
         />
-        {/* <label htmlFor="password">Password:</label> */}
         <input
           placeholder="Mot de passe"
           type="password"

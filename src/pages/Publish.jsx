@@ -94,7 +94,7 @@ const Publish = ({ token }) => {
     }
   };
 
-  console.log("images :>> ", images);
+  // console.log("images :>> ", images);
 
   return token ? (
     <div className="publish-page">

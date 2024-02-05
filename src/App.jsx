@@ -4,8 +4,6 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Offer from "./pages/Offer";
 import Header from "./components/Header";
-// import Product from "./pages/Product";
-// import About from "./pages/About";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Signup from "./pages/Signup";
@@ -33,6 +31,8 @@ function App() {
       try {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offers?page=${page}&limit=10${
+            // mon backend, pour l'instant ça ne colle pas...
+            //`https://site--vinted-replica-back--2bhrm4wg9nqn.code.run/offers?page=${page}&limit=10${
             searchString ? "&title=" + searchString : ""
           }${range[0] ? "&priceMin=" + range[0] : ""}${
             "&priceMax=" + range[1]
@@ -42,14 +42,8 @@ function App() {
                 ? "&sort=price-desc"
                 : "&sort=price-asc"
               : ""
-          }` // `
-          // ex : https://lereacteur-vinted-api.herokuapp.com/offers?priceMin=40&priceMax=200
+          }`
         );
-        // site--vinted-replica-back--2bhrm4wg9nqn.code.run
-        // const response = await axios.get(
-        //   `https://site--vinted-replica-back--2bhrm4wg9nqn.code.run/offers`
-        //   `https://site--vinted-replica-back--2bhrm4wg9nqn.code.run/offers?page=${page}&limit=10`
-        // );
         console.log("response :>> ", response.data);
         setCount(response.data.count);
         setOffers(response.data.offers);
