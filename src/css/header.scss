@@ -9,12 +9,19 @@ header > .container {
   }
   .search {
     flex: 1;
+    position: relative;
     input {
       width: 100%;
       background-color: #f5f6f7;
       border: none;
       border-radius: 5px;
       padding: 10px;
+      padding-left: 30px;
+    }
+    .fa-magnifying-glass {
+      position: absolute;
+      left: 8px;
+      top: 10px;
     }
     .filters {
       display: flex;

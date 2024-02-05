@@ -3,6 +3,8 @@ import logo from "../assets/img/vinted-logo.png";
 import Cookies from "js-cookie";
 import PriceRange from "./PriceRange";
 import Switch from "react-switch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({
   token,
@@ -56,6 +58,10 @@ const Header = ({
             placeholder="Recherche des articles"
             value={searchString}
             onChange={handleSearch}
+          />
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            style={{ color: "#d1d1d1" }}
           />
           <div className="filters">
             <label>
