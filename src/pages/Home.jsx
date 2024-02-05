@@ -15,6 +15,16 @@ const Home = ({ isLoading, offers, count, page, setPage }) => {
         <Hero />
         <div className="pages-nav">
           <span>Pages:</span>
+          {pagesArray.length > 1 && page !== 1 ? (
+            <span
+              className="nav-button"
+              onClick={() => setPage((prev) => prev - 1)}
+            >
+              ❮
+            </span>
+          ) : (
+            <span></span>
+          )}
           {pagesArray.map((pageNb, index) => (
             <span
               key={index}
@@ -25,6 +35,16 @@ const Home = ({ isLoading, offers, count, page, setPage }) => {
               {pageNb === page ? pageNb : <a>{pageNb}</a>}
             </span>
           ))}
+          {pagesArray.length > 1 && page < pagesArray.length ? (
+            <span
+              className="nav-button"
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              ❯
+            </span>
+          ) : (
+            <span></span>
+          )}
         </div>
         <div className="offers-list">
           {offers.map((offer) => (

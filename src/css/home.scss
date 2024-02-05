@@ -32,6 +32,10 @@
   padding: 10px 0;
   display: flex;
   gap: 10px;
+  .nav-button {
+    cursor: pointer;
+    color: lightgrey;
+  }
   span:not(:first-child) {
     font-weight: bold;
   }
