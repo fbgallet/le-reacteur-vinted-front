@@ -2,6 +2,28 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Avatar from "../components/Avatar";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 
 const Offer = ({ token }) => {
   const [offer, setOffer] = useState({});
@@ -39,7 +61,28 @@ const Offer = ({ token }) => {
   ) : (
     <div className="offer">
       <div className="container">
-        <img src={offer.product_image.url} alt="photo" />
+        {/* <img src={offer.product_image.url} alt="photo" /> */}
+        <div className="images-caroussel">
+          <Carousel
+            swipeable={true}
+            draggable={false}
+            showDots={true}
+            responsive={responsive}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            keyBoardControl={true}
+            customTransition="all .5"
+            transitionDuration={500}
+            containerClass="carousel-container"
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+          >
+            {offer.product_pictures.map((image) => (
+              <div>
+                <img src={image.secure_url} alt="offer picture" />
+              </div>
+            ))}
+          </Carousel>
+        </div>
         <div className="offer-content">
           <div className="price">{offer.product_price.toFixed(2)} €</div>
           <div className="offer-details">

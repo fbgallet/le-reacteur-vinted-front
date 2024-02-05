@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Publish = ({ token }) => {
-  const [file, setFile] = useState(null);
+  const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -22,10 +22,27 @@ const Publish = ({ token }) => {
     setStateCallback(event.target.value);
   };
 
+  const handleUploadImages = (event) => {
+    const files = event.target.files;
+    const imagesArray = [...images];
+    for (const key in files) {
+      if (Object.hasOwnProperty.call(files, key)) {
+        imagesArray.push(files[key]);
+      }
+    }
+    setImages(imagesArray);
+  };
+
+  const handleRemoveImage = (index) => {
+    const clonedImages = [...images];
+    clonedImages.splice(index, 1);
+    setImages(clonedImages);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (!file || !description || !title || !price) return;
+      if (!images.length || !description || !title || !price) return;
       // handle form submit
 
       const formData = new FormData();
@@ -38,7 +55,10 @@ const Publish = ({ token }) => {
       formData.append("condition", condition);
       formData.append("city", place);
       formData.append("price", price);
-      formData.append("picture", file);
+      // single image uploading =>
+      // formData.append("picture", image);
+      // multipe images uploading =>
+      images.forEach((image) => formData.append("picture", image));
       // TODO add exchange key in backend
       //formData.append("exchange", exchange);
 
@@ -73,6 +93,8 @@ const Publish = ({ token }) => {
     }
   };
 
+  console.log("images :>> ", images);
+
   return token ? (
     <div className="publish-page">
       <div className="container">
@@ -86,16 +108,23 @@ const Publish = ({ token }) => {
               Ajoute une photo
               <input
                 type="file"
-                onChange={(event) => {
-                  setFile(event.target.files[0]);
-                }}
+                name="images"
+                id="images"
+                multiple
+                onChange={handleUploadImages}
               />
             </label>
-            {file && (
-              <div className="uploaded-image">
-                <img src={URL.createObjectURL(file)} alt="" />
-                <button>X</button>
+            {images.length ? (
+              <div className="uploaded-images">
+                {images.map((image, index) => (
+                  <div key={index} className="image-preview">
+                    <img src={URL.createObjectURL(image)} alt="" />
+                    <button onClick={() => handleRemoveImage(index)}>X</button>
+                  </div>
+                ))}
               </div>
+            ) : (
+              ""
             )}
           </div>
           <div>

@@ -25,21 +25,25 @@
             display: none;
           }
         }
-        .uploaded-image {
-          position: relative;
-          width: fit-content;
-          img {
-            width: 100px;
-            object-fit: cover;
-          }
-          button {
-            padding: 5px;
-            margin: auto;
-            text-align: center;
-            width: 15px;
-            position: absolute;
-            top: 5px;
-            right: 5px;
+        .uploaded-images {
+          display: flex;
+          gap: 15px;
+          .image-preview {
+            position: relative;
+            width: fit-content;
+            img {
+              width: 100px;
+              object-fit: cover;
+            }
+            button {
+              padding: 5px;
+              margin: auto;
+              text-align: center;
+              width: 15px;
+              position: absolute;
+              top: 5px;
+              right: 5px;
+            }
           }
         }
         &:has(input[type="checkbox"]) > div {

@@ -5,9 +5,16 @@
   > .container {
     display: flex;
     justify-content: space-around;
-    > img {
+    // > img {
+    //   width: 40%;
+    //   object-fit: cover;
+    // }
+    .images-caroussel {
       width: 40%;
-      object-fit: cover;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
     .offer-content {
       background-color: white;
@@ -55,7 +62,13 @@
     height: 100%;
     > .container {
       flex-direction: column;
-      img,
+      .images-caroussel {
+        width: 100%;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
       .offer-content {
         width: 100%;
       }
