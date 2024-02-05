@@ -56,9 +56,10 @@ const Publish = ({ token }) => {
       formData.append("city", place);
       formData.append("price", price);
       // single image uploading =>
-      // formData.append("picture", image);
+      if (images.length === 1) formData.append("picture", images[0]);
       // multipe images uploading =>
-      images.forEach((image) => formData.append("picture", image));
+      else if (images.length > 1)
+        images.forEach((image) => formData.append("picture", image));
       // TODO add exchange key in backend
       //formData.append("exchange", exchange);
 

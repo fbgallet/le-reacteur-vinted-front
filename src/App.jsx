@@ -25,8 +25,8 @@ function App() {
   const [descendingSort, setDescendingSort] = useState(null);
 
   // console.log("count :>> ", count);
-  console.log("offers :>> ", offers);
-  console.log(searchString);
+  // console.log("offers :>> ", offers);
+  // console.log(searchString);
 
   useEffect(() => {
     const fetchData = async () => {

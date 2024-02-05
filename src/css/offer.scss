@@ -5,10 +5,11 @@
   > .container {
     display: flex;
     justify-content: space-around;
-    // > img {
-    //   width: 40%;
-    //   object-fit: cover;
-    // }
+    > img {
+      width: 40%;
+      max-height: 450px;
+      object-fit: cover;
+    }
     .images-caroussel {
       width: 40%;
       img {
@@ -62,6 +63,11 @@
     height: 100%;
     > .container {
       flex-direction: column;
+      > img {
+        width: 100%;
+        max-height: fit-content;
+        object-fit: cover;
+      }
       .images-caroussel {
         width: 100%;
         img {

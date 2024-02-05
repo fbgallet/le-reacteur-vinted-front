@@ -61,28 +61,31 @@ const Offer = ({ token }) => {
   ) : (
     <div className="offer">
       <div className="container">
-        {/* <img src={offer.product_image.url} alt="photo" /> */}
-        <div className="images-caroussel">
-          <Carousel
-            swipeable={true}
-            draggable={false}
-            showDots={true}
-            responsive={responsive}
-            ssr={true} // means to render carousel on server-side.
-            infinite={true}
-            keyBoardControl={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-          >
-            {offer.product_pictures.map((image) => (
-              <div>
-                <img src={image.secure_url} alt="offer picture" />
-              </div>
-            ))}
-          </Carousel>
-        </div>
+        {offer.product_pictures.length === 1 ? (
+          <img src={offer.product_image.url} alt="photo" />
+        ) : (
+          <div className="images-caroussel">
+            <Carousel
+              swipeable={true}
+              draggable={false}
+              showDots={true}
+              responsive={responsive}
+              ssr={true} // means to render carousel on server-side.
+              infinite={true}
+              keyBoardControl={true}
+              customTransition="all .5"
+              transitionDuration={500}
+              containerClass="carousel-container"
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+            >
+              {offer.product_pictures.map((image) => (
+                <div>
+                  <img src={image.secure_url} alt="offer picture" />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        )}
         <div className="offer-content">
           <div className="price">{offer.product_price.toFixed(2)} €</div>
           <div className="offer-details">
